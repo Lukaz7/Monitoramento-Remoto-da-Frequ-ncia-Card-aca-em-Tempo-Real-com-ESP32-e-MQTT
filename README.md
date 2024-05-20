@@ -1,70 +1,58 @@
 # Monitoramento-Remoto-da-Frequ-ncia-Card-aca-em-Tempo-Real-com-ESP32-e-MQTT
-Este projeto oferece uma solução completa para monitorar a frequência cardíaca em tempo real, transmitindo os dados de forma segura e eficiente para visualização remota. Através da combinação do microcontrolador ESP32 com o sensor KY-039 e o protocolo MQTT, é possível acompanhar a saúde cardiovascular de qualquer lugar, a qualquer hora.
 
-# Funcionamento
+# Descrição:
 
-Captura: O sensor KY-039, posicionado no dedo do usuário, utiliza um LED infravermelho e um fototransistor para detectar as variações no fluxo sanguíneo, indicando os batimentos cardíacos.
+Este projeto tem como objetivo criar um sistema de monitoramento da frequência cardíaca (FC) em tempo real, utilizando o microcontrolador ESP32, o sensor KY-039 e o protocolo MQTT. A FC é um indicador vital importante da saúde cardiovascular e o monitoramento contínuo pode auxiliar na detecção precoce de problemas cardíacos e no acompanhamento da resposta a tratamentos.
 
-Processamento: O microcontrolador ESP32 recebe os dados brutos do sensor e, através da biblioteca PulseSensor Playground, calcula a frequência cardíaca em batimentos por minuto (BPM).
+Devido a problemas com os componentes físicos (ESP32 e sensor KY-039) que apresentaram defeitos e não funcionaram como esperado, o projeto foi desenvolvido e testado em um ambiente de simulação online chamado Wokwi. O Wokwi permite simular o ESP32 e outros componentes eletrônicos, possibilitando o desenvolvimento e teste do código sem a necessidade de hardware físico.
 
-Transmissão:  O ESP32, utilizando o protocolo MQTT e a biblioteca PubSubClient, envia os dados da frequência cardíaca para um broker MQTT na nuvem (broker.emqx.io) via conexão Wi-Fi.
+No ambiente Wokwi, o código foi adaptado para simular a leitura dos dados do sensor KY-039 e gerar valores de frequência cardíaca simulados. Esses valores são então processados pelo ESP32 simulado e enviados para um broker MQTT virtual, simulando a comunicação em tempo real.
 
-Visualização Remota: Qualquer dispositivo (smartphone, tablet, computador) com um cliente MQTT pode se conectar ao broker e receber os dados da frequência cardíaca em tempo real, permitindo o monitoramento remoto e contínuo.
+O sistema desenvolvido é de baixo custo, portátil e flexível, tornando-o ideal para aplicações em saúde personalizada e preventiva. Ele coleta os dados do sensor KY-039, que detecta as variações no fluxo sanguíneo, e os envia para o ESP32 para processamento. O ESP32 calcula a frequência cardíaca e, em seguida, transmite os dados para um broker MQTT através de uma conexão Wi-Fi.
 
-# Passo a Passo para Reproduzir o Projeto
-Monte o Circuito:
+Os dados da frequência cardíaca podem ser visualizados e armazenados em um servidor MQTT ou em um aplicativo móvel, permitindo o monitoramento remoto em tempo real. Isso possibilita que profissionais de saúde ou cuidadores acompanhem a FC do paciente remotamente, oferecendo maior comodidade e acessibilidade.
 
-Conecte o sensor KY-039 ao ESP32 conforme o diagrama, utilizando jumpers.
-Certifique-se de que o sensor esteja bem fixado ao dedo para garantir leituras precisas.
-Instale as Bibliotecas:
+# Funcionamento:
 
-Faça o download e instale as bibliotecas PulseSensorPlayground e PubSubClient no Arduino IDE.
-Configure o Broker MQTT:
-
-# Crie uma conta gratuita no broker.emqx.io.
-
-Crie um novo tópico (por exemplo, "frequencia_cardiaca") para receber os dados do ESP32.
-Anote as credenciais de acesso (endereço do broker, porta, nome de usuário e senha).
-Carregue o Código:
-
-# Abra o código-fonte fornecido no Arduino IDE.
-
-Substitua os valores de ssid, password, mqttServer, mqttPort, mqttUser e mqttPassword pelas suas credenciais de Wi-Fi e MQTT.
-Substitua o valor de topic pelo nome do tópico que você criou no broker.
-Compile e carregue o código no ESP32.
-Software
-
-# O código-fonte utiliza as seguintes bibliotecas:
-
-PulseSensorPlayground: Simplifica a leitura e o processamento dos dados do sensor KY-039.
-PubSubClient: Implementa o protocolo MQTT para a comunicação com o broker.
-
-# As principais variáveis e funções são:
-
-BPM: Armazena o valor da frequência cardíaca calculada.
-Signal: Armazena o valor bruto lido do sensor.
-Threshold: Define o limiar para a detecção de um batimento cardíaco.
-QS: Controla a qualidade de serviço (QoS) da publicação MQTT.
-pubTopic: Define o tópico MQTT para a publicação dos dados.
-
-# Hardware
+*Coleta de dados:* No ambiente Wokwi, os dados do sensor KY-039 são simulados, gerando valores de frequência cardíaca que se assemelham aos valores reais.
+Processamento de dados: O ESP32 simulado recebe os dados simulados do sensor e os processa utilizando algoritmos de análise de sinal para calcular a frequência cardíaca.
+Transmissão de dados: O ESP32 simulado utiliza o protocolo MQTT para publicar os dados da frequência cardíaca simulados em um tópico específico do broker MQTT virtual.
+Visualização e armazenamento: Os dados publicados no broker MQTT virtual podem ser acessados e visualizados no ambiente Wokwi, simulando o monitoramento em tempo real.
+Componentes de Hardware (Simulados no Wokwi):
 
 ESP32 DEVKIT V1 DOIT: Microcontrolador com Wi-Fi e Bluetooth integrado, responsável pelo processamento dos dados e comunicação com o broker MQTT.
-KY-039: Sensor óptico de pulso que utiliza um LED infravermelho e um fototransistor para detectar o pulso.
-Jumpers: Fios utilizados para conectar os componentes no circuito.
-Interfaces, Protocolos e Módulos de Comunicação
-MQTT: Protocolo de mensagens leve e eficiente, ideal para dispositivos IoT.
-TCP/IP: Protocolo de comunicação utilizado para a conexão à internet via Wi-Fi.
-Wi-Fi: Tecnologia de rede sem fio utilizada para conectar o ESP32 à internet.
-I2C: Protocolo de comunicação utilizado para a comunicação entre o ESP32 e o sensor KY-039.
-Comunicação/Controle via Internet (TCP/IP) e Uso do Protocolo MQTT
+Sensor de batimentos cardíacos KY-039: Sensor óptico que detecta as variações no fluxo sanguíneo para medir a frequência cardíaca.
 
-# O ESP32 utiliza o protocolo TCP/IP para se conectar à internet via Wi-Fi. Uma vez conectado, ele estabelece uma conexão com o broker MQTT utilizando o protocolo MQTT sobre TCP/IP.
+# Bibliotecas de Software:
 
-Outros dispositivos, como smartphones, tablets ou computadores, podem se conectar ao mesmo broker MQTT e se inscrever no tópico "frequencia_cardiaca" para receber os dados da frequência cardíaca em tempo real.
+PulseSensor Playground: Biblioteca para facilitar a leitura e processamento dos dados do sensor KY-039 (utilizada no código para simular a leitura dos dados).
+PubSubClient: Biblioteca para implementar o protocolo MQTT no ESP32.
 
-# Vantagens do MQTT
-Comunicação assíncrona: O ESP32 pode enviar dados sem esperar uma resposta do broker.
-Baixo overhead: O protocolo MQTT possui um cabeçalho de mensagem pequeno.
-Escalabilidade: O MQTT suporta um grande número de dispositivos conectados.
+# Interfaces, Protocolos e Módulos de Comunicação:
 
+I2C: Interface de comunicação utilizada para conectar o sensor KY-039 ao ESP32 (simulada no Wokwi).
+Wi-Fi: Tecnologia de comunicação sem fio utilizada para conectar o ESP32 à internet (simulada no Wokwi).
+MQTT: Protocolo de comunicação leve e eficiente utilizado para transmitir os dados da frequência cardíaca do ESP32 para o broker MQTT.
+Código-Fonte e Documentação:
+
+O código-fonte completo do projeto, incluindo a configuração do ESP32, a leitura dos dados do sensor (simulada), o cálculo da frequência cardíaca e a comunicação MQTT, está disponível no repositório GitHub. A documentação do código inclui comentários explicativos e instruções para executar o projeto no Wokwi.
+
+# Próximos Passos:
+
+Substituir os componentes defeituosos (ESP32 e sensor KY-039) por componentes funcionais.
+Testar o sistema com os componentes físicos reais para validar seu funcionamento em um ambiente real.
+Implementar recursos adicionais, como alertas em caso de anormalidades na FC e um aplicativo móvel para visualização dos dados.
+
+# Observações:
+
+Este projeto é um protótipo desenvolvido e testado em um ambiente de simulação (Wokwi).
+A precisão e o desempenho do sistema em um ambiente real podem variar.
+Este projeto não se destina a fins médicos. Consulte um profissional de saúde para obter um diagnóstico preciso.
+
+# Repositório GitHub
+
+
+
+[URL inválido removido]
+
+O repositório contém a documentação do código, instruções para executar o projeto no Wokwi e a descrição do hardware simulado.
