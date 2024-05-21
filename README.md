@@ -27,9 +27,13 @@ PubSubClient
 
 # Instalação:
 Clone o repositório: git clone https://github.com/seu-usuario/monitor-frequencia-cardiaca.git 
+
 Instale as bibliotecas necessárias no Arduino IDE. 
+
 Conecte o sensor KY-039 ao ESP32 conforme o diagrama de conexões (disponível no repositório). 
+
 Configure as credenciais de Wi-Fi e o endereço do broker MQTT no código (main.ino). 
+
 Compile e envie o código para o ESP32.
 
 # Funcionamento:
@@ -46,8 +50,11 @@ Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou pull r
 
 # Observações:
 O código completo e funcional está disponível no repositório: https://github.com/Lukaz7/Monitoramento-Remoto-da-Frequ-ncia-Card-aca-em-Tempo-Real-com-ESP32-e-MQTT.git 
+
 As credenciais de Wi-Fi, o endereço do broker MQTT e o tópico MQTT devem ser configurados no código (main.ino). 
+
 Wokwi: Plataforma de simulação online que permite a prototipagem virtual de projetos eletrônicos, incluindo a simulação do ESP32 e outros componentes. 
+
 Broker MQTT: Para a simulação, você pode utilizar um broker MQTT público gratuito, como o broker.emqx.io, ou configurar um broker local em seu computador.
 
 Este projeto oferece uma base sólida para o desenvolvimento de um sistema de monitoramento remoto da frequência cardíaca em tempo real. Com a substituição dos componentes defeituosos e a realização de testes adicionais, ele tem o potencial de se tornar uma ferramenta valiosa para o monitoramento da saúde cardiovascular.
