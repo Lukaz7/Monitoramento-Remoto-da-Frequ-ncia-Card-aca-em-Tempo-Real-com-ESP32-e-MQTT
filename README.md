@@ -14,12 +14,15 @@ Os dados da frequência cardíaca podem ser visualizados e armazenados em um ser
 Criar um sistema de baixo custo, portátil e flexível para monitorar a frequência cardíaca em tempo real, com potencial para aplicações em saúde personalizada e preventiva.
 
 # Componentes:
-ESP32 DEVKIT V1 DOIT.
-Sensor de batimentos cardíacos KY-039.
-Jumpers.
+ESP32 DEVKIT V1 DOIT
+
+Sensor de batimentos cardíacos KY-039
+
+Jumpers
 
 # Bibliotecas:
 PulseSensor Playground 
+
 PubSubClient
 
 # Instalação:
